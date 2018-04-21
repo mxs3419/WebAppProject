@@ -30,7 +30,7 @@
 
 <html>
 <link rel="stylesheet" href="styles.css">
-<body>
+<body link="white">
 	<div class="skitter">
 		<img src="skitter.png" alt="skitter">
 	</div>
@@ -39,9 +39,10 @@
 			<label>UserName :</label><input type="text" name = "username" class= "box" /><br /><br />
 			<label>Password :</label><input type="password" name = "password" class = "box" /><br/><br />
 			<input type = "submit" value = " Submit "/><br />
+	
 		</form>
+			<p><a href = "register.php" style="color: #ffffff">Create an Account</a></p>
 	</div>
-		
 </body>
 </html>
 
