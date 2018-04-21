@@ -1,0 +1,58 @@
+version: '2'
+services:
+  web1:
+     hostname: "web1"
+     container_name: "web1"
+     image: "web1"
+     ports:
+      - "4000:80"
+
+
+  web2:
+     hostname: "web2"
+     container_name: "web2"
+     image: "web2"
+     ports:
+      - "4444:80"
+
+
+  loadbal:
+     hostname: "loadbal"
+     container_name: "loadbal"
+     image: "loadbal"
+     ports:
+      - "80:80"
+
+
+  db:
+     hostname: "db"
+     container_name: "db"
+     image: "skitter_db"
+     environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=skitter
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=password
+     ports:
+      - "3306:3306"
+
+
+  elasticsearch:
+    image: elasticsearch
+    container_name: elasticsearch
+    environment:
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - "9200:9200"
+
+  kibana:
+    image: kibana
+    ports:
+      - "5601:5601"
+
